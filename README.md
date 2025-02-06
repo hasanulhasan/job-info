@@ -9,7 +9,9 @@ Technology used:
 Next JS, Tilwind CSS
 
 ### How to run
-go server folder, its a json server and put following command
+- 1- First clone this repository.
+- 2- Go Server folder , here a json server
+- 3- Do following command
 ```bash
 npm install -g json-server
 json-server --watch data.json --port 3001
