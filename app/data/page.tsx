@@ -18,13 +18,14 @@ interface User {
 
 export default function DataPage() {
   const [users, setUsers] = useState<User[]>([]);
-  console.log(users[0]?.skill);
 
   useEffect(() => {
+
     fetch("http://localhost:3001/users")
       .then((response) => response.json())
       .then((data: User[]) => setUsers(data))
       .catch((error) => console.error("Error fetching data:", error));
+
   }, []);
 
   return (
