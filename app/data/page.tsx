@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useState, useEffect } from "react";
 type Skill = {
   name: string;
@@ -20,12 +20,10 @@ export default function DataPage() {
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-
-    fetch("http://localhost:3001/users")
+    fetch("https://job-info-server.onrender.com/users")
       .then((response) => response.json())
       .then((data: User[]) => setUsers(data))
       .catch((error) => console.error("Error fetching data:", error));
-
   }, []);
 
   return (
@@ -53,13 +51,19 @@ export default function DataPage() {
                 <td className="py-2 px-4">${user.salary}</td>
                 <td className="py-2 px-4">{user.introduction}</td>
                 <td className="py-2 px-4">{user.experience}</td>
-                <td className="py-2 px-4">{users[index]?.skill?.map((skill,ind)=> <span key={ind}>{skill.name}, </span>)}</td>
+                <td className="py-2 px-4">
+                  {users[index]?.skill?.map((skill, ind) => (
+                    <span key={ind}>{skill.name}, </span>
+                  ))}
+                </td>
                 <td className="py-2 px-4">{user.status}</td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan={9} className="text-center py-4">Loading...</td>
+              <td colSpan={9} className="text-center py-4">
+                Loading...
+              </td>
             </tr>
           )}
         </tbody>

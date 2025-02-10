@@ -35,7 +35,7 @@ export default function FormPage() {
   const [skill, setSkill] = useState([]);
   const [status, setStatus] = useState("");
   const [errors, setErrors] = useState<any>({});
-  
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -51,7 +51,7 @@ export default function FormPage() {
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      return; 
+      return;
     }
 
     const dataToSave = {
@@ -66,7 +66,7 @@ export default function FormPage() {
     };
 
     try {
-      const res = await fetch("http://localhost:3001/users", {
+      const res = await fetch("https://job-info-server.onrender.com/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -205,8 +205,10 @@ export default function FormPage() {
               <option value="senior">Senior</option>
             </select>
             {errors.experience && (
-          <p className="text-red-500 text-xs italic mt-1.5">{errors.experience}</p>
-        )}
+              <p className="text-red-500 text-xs italic mt-1.5">
+                {errors.experience}
+              </p>
+            )}
           </div>
 
           {/* Skills */}
